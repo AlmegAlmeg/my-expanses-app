@@ -21,16 +21,24 @@ class _AddInfoDialogState extends State<AddInfoDialog> {
   final ExpanseController ec = Get.put(ExpanseController());
 
   @override
+  void dispose() {
+    _infoController.dispose();
+    _priceController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(color: grey),
+        height: height(context) * 0.7,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        decoration: BoxDecoration(color: white, borderRadius: BorderRadius.circular(20)),
         child: Form(
           child: Column(
             children: [
-              const CustomText(text: "הוספת הוצאה / הכנסה", fontSize: FontSizes.text27),
+              const CustomText(text: "הוספת הוצאה / הכנסה", fontSize: FontSizes.text32),
               const SizedBox(height: 10),
               TextFormField(
                 controller: _infoController,
@@ -43,28 +51,7 @@ class _AddInfoDialogState extends State<AddInfoDialog> {
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(label: CustomText(text: "סכום")),
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: width(context) * 0.4,
-                    child: ListTile(
-                      leading: _isExpanse ? Icon(Icons.check, color: primary) : null,
-                      title: const CustomText(text: "הוצאה"),
-                      onTap: () => setState(() => _isExpanse = true),
-                    ),
-                  ),
-                  SizedBox(
-                    width: width(context) * 0.4,
-                    child: ListTile(
-                      leading: !_isExpanse ? Icon(Icons.check, color: primary) : null,
-                      title: const CustomText(text: "הכנסה"),
-                      onTap: () => setState(() => _isExpanse = false),
-                    ),
-                  ),
-                ],
-              ),
+              const SizedBox(height: 30),
               CustomButton(
                 backgroundColor: primary,
                 func: () {
@@ -75,7 +62,12 @@ class _AddInfoDialogState extends State<AddInfoDialog> {
                   }
                   Get.back();
                 },
-                child: const CustomText(text: "הוספה"),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: const CustomText(
+                  text: "הוספה",
+                  color: white,
+                  fontSize: FontSizes.text32,
+                ),
               )
             ],
           ),
