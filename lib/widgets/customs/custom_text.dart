@@ -6,14 +6,14 @@ class CustomText extends StatelessWidget {
   const CustomText({
     required this.text,
     this.textAlign = TextAlign.center,
-    this.color = white,
+    this.color,
     this.fontSize = FontSizes.text21,
     super.key,
   });
 
   final String text;
   final TextAlign textAlign;
-  final Color color;
+  final Color? color;
   final double fontSize;
 
   @override
@@ -23,8 +23,9 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       textDirection: TextDirection.rtl,
       style: TextStyle(
-        color: color,
+        color: color ?? grey,
         fontSize: fontSize,
+        fontFamily: "Arimo",
       ),
     );
   }

@@ -7,6 +7,8 @@ class CustomButton extends StatelessWidget {
     required this.func,
     this.backgroundColor,
     this.padding,
+    this.width,
+    this.height,
     super.key,
   });
 
@@ -14,17 +16,24 @@ class CustomButton extends StatelessWidget {
   final void Function() func;
   final Color? backgroundColor;
   final EdgeInsets? padding;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: func,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? grey,
-        elevation: 0,
-        padding: padding,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: func,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor ?? white,
+          elevation: 0,
+          padding: padding,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
