@@ -10,13 +10,14 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 40,
-      height: 40,
+      width: 45,
+      height: 45,
       child: ElevatedButton(
         onPressed: func,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           padding: const EdgeInsets.all(0),
+          shape: const CircleBorder(),
         ),
         child: Icon(icon),
       ),

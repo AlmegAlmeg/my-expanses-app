@@ -11,12 +11,16 @@ class ExpanseController extends GetxController {
     Expanse(id: "e6", info: "קניות ירקות", price: 8.2),
   ].obs;
 
-  double getTotalExpanses() {
+  RxDouble total = 0.0.obs;
+
+  void getTotalExpanses() {
     double totalExpanses = 0;
     for (var exp in expanses) {
       totalExpanses = totalExpanses + exp.price;
     }
-    return totalExpanses;
+    total.value = totalExpanses;
+
+    update();
   }
 
   void addExpanse(String newInfo, double newPrice) {
@@ -25,12 +29,14 @@ class ExpanseController extends GetxController {
       info: newInfo,
       price: newPrice,
     ));
+    getTotalExpanses();
 
     update();
   }
 
   void deleteExpanse(String id) {
     expanses.removeWhere((exp) => exp.id == id);
+    getTotalExpanses();
 
     update();
   }

@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myexpenessapp/config/colors.dart';
 import 'package:myexpenessapp/config/font_sizes.dart';
-import 'package:myexpenessapp/controllers/expanse_controller.dart';
-import 'package:myexpenessapp/model/expanse.dart';
+import 'package:myexpenessapp/controllers/income_controller.dart';
+import 'package:myexpenessapp/model/income.dart';
 import 'package:myexpenessapp/utils/format_number.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
 import 'package:myexpenessapp/widgets/customs/custom_icon_button.dart';
 import 'package:myexpenessapp/widgets/shared/delete_dialog.dart';
 
-class SingleExpanse extends StatelessWidget {
-  SingleExpanse({required this.expanse, super.key});
+class SingleIncome extends StatelessWidget {
+  SingleIncome({required this.income, super.key});
 
-  final Expanse expanse;
-  final ExpanseController ec = Get.put(ExpanseController());
+  final Income income;
+  final IncomeController ic = Get.put(IncomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,8 @@ class SingleExpanse extends StatelessWidget {
                 right: 10,
                 child: CircleAvatar(
                   radius: 15,
-                  backgroundColor: expanseColor,
-                  child: const Icon(Icons.attach_money, color: white, size: 25),
+                  backgroundColor: incomeColor,
+                  child: const Icon(Icons.money_off, color: white, size: 25),
                 ),
               ),
             ],
@@ -47,11 +47,11 @@ class SingleExpanse extends StatelessWidget {
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: CustomText(text: expanse.info),
+            child: CustomText(text: income.info),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: CustomText(text: "₪${formatNumber(expanse.price)}", fontSize: FontSizes.text16, color: lightGrey),
+            child: CustomText(text: "₪${formatNumber(income.price)}", fontSize: FontSizes.text16, color: lightGrey),
           ),
           Padding(
             padding: const EdgeInsets.all(5),
@@ -65,7 +65,7 @@ class SingleExpanse extends StatelessWidget {
                   func: () => showDialog(
                     context: context,
                     builder: ((ctx) {
-                      return Dialog(child: DeleteDialog(deleteFunc: () => ec.deleteExpanse(expanse.id)));
+                      return Dialog(child: DeleteDialog(deleteFunc: () => ic.deleteIncome(income.id)));
                     }),
                   ),
                 ),

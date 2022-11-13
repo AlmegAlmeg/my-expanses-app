@@ -3,15 +3,17 @@ import 'package:myexpenessapp/model/income.dart';
 
 class IncomeController extends GetxController {
   RxList<Income> incomes = <Income>[
-    Income(id: "i1", info: "משכורת", price: 7781),
+    Income(id: "i1", info: "משכורת", price: 2000),
   ].obs;
+  RxDouble total = 0.0.obs;
 
-  double getTotalIncome() {
+  void getTotalIncome() {
     double totalIncome = 0;
     for (var inc in incomes) {
       totalIncome = totalIncome + inc.price;
     }
-    return totalIncome;
+    total.value = totalIncome;
+    update();
   }
 
   void addIncome(String newInfo, double newPrice) {
@@ -20,12 +22,14 @@ class IncomeController extends GetxController {
       info: newInfo,
       price: newPrice,
     ));
+    getTotalIncome();
 
     update();
   }
 
   void deleteIncome(String id) {
     incomes.removeWhere((inc) => inc.id == id);
+    getTotalIncome();
 
     update();
   }

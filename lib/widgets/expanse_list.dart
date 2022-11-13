@@ -14,37 +14,45 @@ class ExpanseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(maxHeight: 243),
-      margin: const EdgeInsets.symmetric(vertical: 30),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(
-                  text: "ההוצאות שלי (₪${formatNumber(ec.getTotalExpanses())})",
-                  fontSize: FontSizes.text18,
-                ),
-                GestureDetector(child: CustomText(text: "לכל ההוצאות", fontSize: FontSizes.text18, color: secondary)),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Obx(() {
-              return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: ec.expanses.length,
-                itemBuilder: ((ctx, i) {
-                  return SingleExpanse(expanse: ec.expanses[i]);
-                }),
-              );
-            }),
-          )
-        ],
-      ),
-    );
+    return Obx(() {
+      return Container(
+        constraints: const BoxConstraints(maxHeight: 250),
+        margin: const EdgeInsets.symmetric(vertical: 20),
+        child: ec.expanses.isEmpty
+            ? const CustomText(text: "נהדר! אין לך הוצאות", fontSize: FontSizes.text32)
+            : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Obx(() {
+                          return CustomText(
+                            text: "ההוצאות שלי (₪${formatNumber(ec.total.value)})",
+                            fontSize: FontSizes.text18,
+                          );
+                        }),
+                        GestureDetector(
+                          child: CustomText(text: "לכל ההוצאות", fontSize: FontSizes.text18, color: secondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: ec.expanses.length,
+                      separatorBuilder: (ctx, i) => const SizedBox(width: 15),
+                      itemBuilder: ((ctx, i) {
+                        return SingleExpanse(expanse: ec.expanses[i]);
+                      }),
+                    ),
+                  )
+                ],
+              ),
+      );
+    });
   }
 }

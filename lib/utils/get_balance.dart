@@ -7,7 +7,7 @@ String getBalance() {
   final ExpanseController ec = Get.put(ExpanseController());
   final IncomeController ic = Get.put(IncomeController());
 
-  double balance = ic.getTotalIncome() - ec.getTotalExpanses();
+  double balance = ic.total.value - ec.total.value;
 
   return formatNumber(balance);
 }
