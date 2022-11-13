@@ -14,18 +14,19 @@ class HomePageTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isNegative = ec.getTotalExpanses() > ec.getTotalIncome();
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Container(
-          height: height(context) * 0.3,
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          height: height(context) * 0.34,
           width: width(context),
           decoration: BoxDecoration(
-            color: primary,
             borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
             boxShadow: [BoxShadow(color: grey, blurRadius: 30)],
             gradient: LinearGradient(
-              colors: [primary, secondary],
+              colors: isNegative ? [primaryBad, secondaryBad] : [primary, secondary],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -35,10 +36,11 @@ class HomePageTop extends StatelessWidget {
             children: [
               const CustomText(text: "מצב המאזן:", fontSize: FontSizes.text46, color: white),
               const SizedBox(height: 15),
-              // Obx(() {
-              CustomText(text: "₪${ec.getBalance()}", color: white, fontSize: FontSizes.text27),
-              // }),
-              const SizedBox(height: 40),
+              CustomText(
+                  text: "₪${ec.getBalance()}",
+                  color: white,
+                  fontSize: FontSizes.text27,
+                  textDirection: TextDirection.ltr),
             ],
           ),
         ),

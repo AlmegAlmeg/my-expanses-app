@@ -8,6 +8,7 @@ class CustomText extends StatelessWidget {
     this.textAlign = TextAlign.center,
     this.color,
     this.fontSize = FontSizes.text21,
+    this.textDirection = TextDirection.rtl,
     super.key,
   });
 
@@ -15,13 +16,14 @@ class CustomText extends StatelessWidget {
   final TextAlign textAlign;
   final Color? color;
   final double fontSize;
+  final TextDirection textDirection;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       textAlign: textAlign,
-      textDirection: TextDirection.rtl,
+      textDirection: textDirection,
       style: TextStyle(
         color: color ?? grey,
         fontSize: fontSize,
