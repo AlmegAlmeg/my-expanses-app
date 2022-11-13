@@ -4,6 +4,8 @@ import 'package:myexpenessapp/config/colors.dart';
 import 'package:myexpenessapp/config/font_sizes.dart';
 import 'package:myexpenessapp/config/media_query_variables.dart';
 import 'package:myexpenessapp/controllers/expanse_controller.dart';
+import 'package:myexpenessapp/controllers/income_controller.dart';
+import 'package:myexpenessapp/utils/get_balance.dart';
 import 'package:myexpenessapp/widgets/customs/custom_button.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
 
@@ -11,10 +13,11 @@ class HomePageTop extends StatelessWidget {
   HomePageTop({super.key});
 
   final ExpanseController ec = Get.put(ExpanseController());
+  final IncomeController ic = Get.put(IncomeController());
 
   @override
   Widget build(BuildContext context) {
-    final bool isNegative = ec.getTotalExpanses() > ec.getTotalIncome();
+    final bool isNegative = ec.getTotalExpanses() > ic.getTotalIncome();
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -37,10 +40,11 @@ class HomePageTop extends StatelessWidget {
               const CustomText(text: "מצב המאזן:", fontSize: FontSizes.text46, color: white),
               const SizedBox(height: 15),
               CustomText(
-                  text: "₪${ec.getBalance()}",
-                  color: white,
-                  fontSize: FontSizes.text27,
-                  textDirection: TextDirection.ltr),
+                text: "₪${getBalance()}",
+                color: white,
+                fontSize: FontSizes.text27,
+                textDirection: TextDirection.ltr,
+              ),
             ],
           ),
         ),

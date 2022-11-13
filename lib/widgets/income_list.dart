@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:myexpenessapp/config/colors.dart';
 import 'package:myexpenessapp/config/font_sizes.dart';
 import 'package:myexpenessapp/config/media_query_variables.dart';
-import 'package:myexpenessapp/controllers/expanse_controller.dart';
+import 'package:myexpenessapp/controllers/income_controller.dart';
 import 'package:myexpenessapp/utils/format_number.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
 
 class IncomeList extends StatelessWidget {
   IncomeList({super.key});
 
-  final ExpanseController ec = Get.put(ExpanseController());
+  final IncomeController ic = Get.put(IncomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class IncomeList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CustomText(text: "ההכנסות שלי", fontSize: FontSizes.text25),
-                CustomText(text: "₪${ec.getTotalIncome()}")
+                CustomText(text: "₪${ic.getTotalIncome()}")
               ],
             ),
           ),
@@ -41,7 +41,7 @@ class IncomeList extends StatelessWidget {
             child: Obx(() {
               return Scrollbar(
                 child: ListView.builder(
-                  itemCount: ec.incomes.length,
+                  itemCount: ic.incomes.length,
                   shrinkWrap: true,
                   itemBuilder: ((ctx, i) {
                     return ListTile(
@@ -49,9 +49,9 @@ class IncomeList extends StatelessWidget {
                         backgroundColor: incomeColor,
                         child: const Icon(Icons.money_off, color: white),
                       ),
-                      title: CustomText(text: ec.incomes[i].info, textAlign: TextAlign.right),
+                      title: CustomText(text: ic.incomes[i].info, textAlign: TextAlign.right),
                       subtitle: CustomText(
-                        text: "₪${formatNumber(ec.incomes[i].price)}",
+                        text: "₪${formatNumber(ic.incomes[i].price)}",
                         textAlign: TextAlign.right,
                         color: lightGrey,
                         fontSize: FontSizes.text18,

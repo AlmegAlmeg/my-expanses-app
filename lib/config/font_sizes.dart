@@ -1,4 +1,5 @@
 class FontSizes {
+  static const double text16 = 16;
   static const double text18 = 18;
   static const double text21 = 21;
   static const double text25 = 25;

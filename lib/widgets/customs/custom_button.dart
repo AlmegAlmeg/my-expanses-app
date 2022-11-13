@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
     this.padding,
     this.width,
     this.height,
+    this.useShadow = false,
     super.key,
   });
 
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
   final EdgeInsets? padding;
   final double? width;
   final double? height;
+  final bool useShadow;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class CustomButton extends StatelessWidget {
         onPressed: func,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? white,
-          elevation: 0,
+          elevation: useShadow ? 5 : 0,
           padding: padding,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         ),
