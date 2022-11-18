@@ -34,7 +34,7 @@ class ExpanseList extends StatelessWidget {
                           );
                         }),
                         GestureDetector(
-                          child: CustomText(text: "לכל ההוצאות", fontSize: FontSizes.text18, color: secondary),
+                          child: CustomText(text: "לכל ההוצאות", fontSize: FontSizes.text18, color: keyColor2),
                         ),
                       ],
                     ),

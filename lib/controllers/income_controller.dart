@@ -3,7 +3,7 @@ import 'package:myexpenessapp/model/income.dart';
 
 class IncomeController extends GetxController {
   RxList<Income> incomes = <Income>[
-    Income(id: "i1", info: "משכורת", price: 2000),
+    Income(id: "i1", info: "משכורת", price: 7000),
   ].obs;
   RxDouble total = 0.0.obs;
 

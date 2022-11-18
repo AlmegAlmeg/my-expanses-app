@@ -42,7 +42,7 @@ class DeleteDialog extends StatelessWidget {
                       deleteFunc();
                       Get.back();
                     },
-                    backgroundColor: secondary,
+                    backgroundColor: keyColor2,
                     useShadow: true,
                     height: 45,
                     width: 100,

@@ -19,7 +19,9 @@ class IncomesList extends StatelessWidget {
         constraints: const BoxConstraints(maxHeight: 250),
         margin: const EdgeInsets.symmetric(vertical: 10),
         child: ic.incomes.isEmpty
-            ? const CustomText(text: "נראה שאין לך הכנסות עדיין...", fontSize: FontSizes.text32)
+            ? const CustomText(
+                text: "נראה שאין לך הכנסות עדיין...",
+                fontSize: FontSizes.text32)
             : Column(
                 children: [
                   Padding(
@@ -29,12 +31,16 @@ class IncomesList extends StatelessWidget {
                       children: [
                         Obx(() {
                           return CustomText(
-                            text: "ההוצאות שלי (₪${formatNumber(ic.total.value)})",
+                            text:
+                                "ההוצאות שלי (₪${formatNumber(ic.total.value)})",
                             fontSize: FontSizes.text18,
                           );
                         }),
                         GestureDetector(
-                          child: CustomText(text: "לכל ההכנסות", fontSize: FontSizes.text18, color: secondary),
+                          child: CustomText(
+                              text: "לכל ההכנסות",
+                              fontSize: FontSizes.text18,
+                              color: keyColor2),
                         ),
                       ],
                     ),
