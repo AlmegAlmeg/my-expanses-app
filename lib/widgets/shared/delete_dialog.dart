@@ -16,14 +16,14 @@ class DeleteDialog extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Positioned(
+        const Positioned(
           top: -25,
           left: 0,
           right: 0,
           child: CircleAvatar(
-            backgroundColor: expanseColor,
+            backgroundColor: complementary1,
             radius: 35,
-            child: const Icon(Icons.delete, color: white, size: 50),
+            child: Icon(Icons.delete, color: white, size: 50),
           ),
         ),
         Container(

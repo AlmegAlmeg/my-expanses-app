@@ -33,13 +33,13 @@ class SingleExpanse extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(color: almostWhite, height: 30),
-              Positioned(
+              const Positioned(
                 top: 15,
                 right: 10,
                 child: CircleAvatar(
                   radius: 15,
-                  backgroundColor: expanseColor,
-                  child: const Icon(Icons.attach_money, color: white, size: 25),
+                  backgroundColor: complementary1,
+                  child: Icon(Icons.attach_money, color: white, size: 25),
                 ),
               ),
             ],
@@ -58,10 +58,10 @@ class SingleExpanse extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomIconButton(icon: Icons.edit, backgroundColor: editColor, func: () {}),
+                CustomIconButton(icon: Icons.edit, backgroundColor: complementary3, func: () {}),
                 CustomIconButton(
                   icon: Icons.delete,
-                  backgroundColor: expanseColor,
+                  backgroundColor: complementary1,
                   func: () => showDialog(
                     context: context,
                     builder: ((ctx) {

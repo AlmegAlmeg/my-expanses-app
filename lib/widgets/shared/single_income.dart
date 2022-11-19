@@ -33,13 +33,13 @@ class SingleIncome extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(color: almostWhite, height: 30),
-              Positioned(
+              const Positioned(
                 top: 15,
                 right: 10,
                 child: CircleAvatar(
                   radius: 15,
-                  backgroundColor: incomeColor,
-                  child: const Icon(Icons.money_off, color: white, size: 25),
+                  backgroundColor: keyColor1,
+                  child: Icon(Icons.money_off, color: white, size: 25),
                 ),
               ),
             ],
@@ -58,10 +58,10 @@ class SingleIncome extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomIconButton(icon: Icons.edit, backgroundColor: editColor, func: () {}),
+                CustomIconButton(icon: Icons.edit, backgroundColor: complementary3, func: () {}),
                 CustomIconButton(
                   icon: Icons.delete,
-                  backgroundColor: expanseColor,
+                  backgroundColor: complementary1,
                   func: () => showDialog(
                     context: context,
                     builder: ((ctx) {

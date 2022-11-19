@@ -27,13 +27,10 @@ class HomePageTop extends StatelessWidget {
             height: height(context) * 0.34,
             width: width(context),
             decoration: BoxDecoration(
-              borderRadius:
-                  const BorderRadius.vertical(bottom: Radius.circular(30)),
+              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
               boxShadow: [BoxShadow(color: grey, blurRadius: 30)],
               gradient: LinearGradient(
-                colors: isNegative
-                    ? [primaryBad, secondaryBad]
-                    : [keyColor1, keyColor2],
+                colors: isNegative ? [complementary1, complementary2] : [keyColor1, keyColor2],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -41,10 +38,7 @@ class HomePageTop extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CustomText(
-                    text: "מצב המאזן:",
-                    fontSize: FontSizes.text46,
-                    color: white),
+                const CustomText(text: "מצב המאזן:", fontSize: FontSizes.text46, color: white),
                 const SizedBox(height: 15),
                 CustomText(
                   text: "₪${getBalance()}",
@@ -66,8 +60,7 @@ class HomePageTop extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const CustomText(
-                      text: "הוספת הוצאה / הכנסה", fontSize: FontSizes.text18),
+                  const CustomText(text: "הוספת הוצאה / הכנסה", fontSize: FontSizes.text18),
                   Icon(Icons.add, color: grey),
                 ],
               ),
