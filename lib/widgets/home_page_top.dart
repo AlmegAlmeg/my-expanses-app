@@ -5,6 +5,7 @@ import 'package:myexpenessapp/config/font_sizes.dart';
 import 'package:myexpenessapp/config/media_query_variables.dart';
 import 'package:myexpenessapp/controllers/expanse_controller.dart';
 import 'package:myexpenessapp/controllers/income_controller.dart';
+import 'package:myexpenessapp/pages/edit_item_page.dart';
 import 'package:myexpenessapp/utils/get_balance.dart';
 import 'package:myexpenessapp/widgets/customs/custom_button.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
@@ -28,7 +29,7 @@ class HomePageTop extends StatelessWidget {
             width: width(context),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
-              boxShadow: [BoxShadow(color: grey, blurRadius: 30)],
+              boxShadow: const [BoxShadow(color: grey, blurRadius: 30)],
               gradient: LinearGradient(
                 colors: isNegative ? [complementary1, complementary2] : [keyColor1, keyColor2],
                 begin: Alignment.topCenter,
@@ -54,13 +55,13 @@ class HomePageTop extends StatelessWidget {
             left: 30,
             right: 30,
             child: CustomButton(
-              func: () => {},
+              func: () => Get.to(() => const EditItemPage(id: "", isExpanse: false)),
               height: 50,
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const CustomText(text: "הוספת הוצאה / הכנסה", fontSize: FontSizes.text18),
+                children: const [
+                  CustomText(text: "הוספת הוצאה / הכנסה", fontSize: FontSizes.text18),
                   Icon(Icons.add, color: grey),
                 ],
               ),

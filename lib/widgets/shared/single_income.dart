@@ -4,6 +4,7 @@ import 'package:myexpenessapp/config/colors.dart';
 import 'package:myexpenessapp/config/font_sizes.dart';
 import 'package:myexpenessapp/controllers/income_controller.dart';
 import 'package:myexpenessapp/model/income.dart';
+import 'package:myexpenessapp/pages/edit_item_page.dart';
 import 'package:myexpenessapp/utils/format_number.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
 import 'package:myexpenessapp/widgets/customs/custom_icon_button.dart';
@@ -58,7 +59,11 @@ class SingleIncome extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomIconButton(icon: Icons.edit, backgroundColor: complementary3, func: () {}),
+                CustomIconButton(
+                  icon: Icons.edit,
+                  backgroundColor: complementary3,
+                  func: () => Get.to(() => EditItemPage(id: income.id, isExpanse: false)),
+                ),
                 CustomIconButton(
                   icon: Icons.delete,
                   backgroundColor: complementary1,

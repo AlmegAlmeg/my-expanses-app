@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022059495043",
+    "project_id": "my-expenses-app-e8900",
+    "storage_bucket": "my-expenses-app-e8900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022059495043:android:1cbf584e2dc1d5accf65b6",
+        "android_client_info": {
+          "package_name": "com.example.myexpenessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022059495043-1leqj060kd8g3tbr09def31infauhurg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXmHJDDj7Dkbvo4w3o9ARtZP8CJYI_6hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022059495043-1leqj060kd8g3tbr09def31infauhurg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

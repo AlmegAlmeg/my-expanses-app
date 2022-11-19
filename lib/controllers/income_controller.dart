@@ -33,4 +33,10 @@ class IncomeController extends GetxController {
 
     update();
   }
+
+  Income findIncomeById(String id) {
+    final Income income = incomes.firstWhere((inc) => inc.id == id);
+
+    return income;
+  }
 }

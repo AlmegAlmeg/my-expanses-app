@@ -29,7 +29,7 @@ class IncomesList extends StatelessWidget {
                       children: [
                         Obx(() {
                           return CustomText(
-                            text: "ההוצאות שלי (₪${formatNumber(ic.total.value)})",
+                            text: "ההכנסות שלי (₪${formatNumber(ic.total.value)})",
                             fontSize: FontSizes.text18,
                           );
                         }),

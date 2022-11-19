@@ -40,4 +40,10 @@ class ExpanseController extends GetxController {
 
     update();
   }
+
+  Expanse findExpanseById(String id) {
+    final Expanse expanse = expanses.firstWhere((exp) => exp.id == id);
+
+    return expanse;
+  }
 }

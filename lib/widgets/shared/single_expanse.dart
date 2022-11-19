@@ -4,6 +4,7 @@ import 'package:myexpenessapp/config/colors.dart';
 import 'package:myexpenessapp/config/font_sizes.dart';
 import 'package:myexpenessapp/controllers/expanse_controller.dart';
 import 'package:myexpenessapp/model/expanse.dart';
+import 'package:myexpenessapp/pages/edit_item_page.dart';
 import 'package:myexpenessapp/utils/format_number.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
 import 'package:myexpenessapp/widgets/customs/custom_icon_button.dart';
@@ -58,7 +59,11 @@ class SingleExpanse extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomIconButton(icon: Icons.edit, backgroundColor: complementary3, func: () {}),
+                CustomIconButton(
+                  icon: Icons.edit,
+                  backgroundColor: complementary3,
+                  func: () => Get.to(() => EditItemPage(id: expanse.id, isExpanse: true)),
+                ),
                 CustomIconButton(
                   icon: Icons.delete,
                   backgroundColor: complementary1,
