@@ -1,29 +1,33 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:myexpenessapp/controllers/expanse_controller.dart';
-import 'package:myexpenessapp/widgets/home_page_top.dart';
-import 'package:myexpenessapp/widgets/expanse_list.dart';
-import 'package:myexpenessapp/widgets/income_list.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final ExpanseController ec = Get.put(ExpanseController());
+  final CollectionReference _transactions = FirebaseFirestore.instance.collection("transactions");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HomePageTop(),
-            const SizedBox(height: 30),
-            ExpanseList(),
-            IncomesList(),
-          ],
-        ),
-      ),
+      body: SafeArea(
+          child: StreamBuilder(
+        stream: _transactions.snapshots(),
+        builder: ((context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasData) {
+            return ListView.separated(
+              itemCount: snapshot.data!.docs.length,
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              separatorBuilder: ((context, i) => const Divider()),
+              itemBuilder: ((context, i) {
+                return const ListTile();
+              }),
+            );
+          }
+          return const CircularProgressIndicator();
+        }),
+      )),
     );
   }
 }
