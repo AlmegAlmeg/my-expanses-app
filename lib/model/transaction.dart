@@ -13,13 +13,13 @@ class Transaction {
     required this.createdAt,
   });
 
-  Map<String, dynamic> toJson(Transaction transaction) {
+  Map<String, dynamic> toJson() {
     return {
-      "id": transaction.id,
-      "name": transaction.name,
-      "amount": transaction.amount,
-      "isExpanse": transaction.isExpanse,
-      "createdAt": transaction.name,
+      "id": id,
+      "name": name,
+      "amount": amount,
+      "isExpanse": isExpanse,
+      "createdAt": name,
     };
   }
 

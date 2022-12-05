@@ -5,9 +5,9 @@ import 'package:myexpenessapp/config/font_sizes.dart';
 class CustomText extends StatelessWidget {
   const CustomText({
     required this.text,
-    this.textAlign = TextAlign.center,
+    this.textAlign = TextAlign.start,
     this.color,
-    this.fontSize = FontSizes.text18,
+    this.fontSize = FontSizes.text21,
     this.textDirection = TextDirection.rtl,
     super.key,
   });
@@ -25,7 +25,7 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       textDirection: textDirection,
       style: TextStyle(
-        color: color ?? grey,
+        color: color ?? lightGrey,
         fontSize: fontSize,
         fontFamily: "Arimo",
       ),

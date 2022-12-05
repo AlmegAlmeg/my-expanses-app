@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: func,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? white,
+          backgroundColor: backgroundColor ?? darkGrey,
           elevation: useShadow ? 5 : 0,
           padding: padding,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
