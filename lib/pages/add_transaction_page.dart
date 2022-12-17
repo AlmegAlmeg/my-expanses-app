@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myexpenessapp/config/colors.dart';
@@ -127,10 +126,6 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
       "isExpanse": isExpanse,
       "createdAt": DateTime.now(),
     };
-
-    final transactions = FirebaseFirestore.instance.collection("transactions").doc();
-
-    
 
     Get.back();
   }
