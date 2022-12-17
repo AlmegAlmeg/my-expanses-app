@@ -8,6 +8,10 @@ class TransactionController extends GetxController {
   late Box<Transaction> _tsBox;
 
   /* Getters */
+  List<Transaction> get allTransactions => _transactions;
+
+  int get transactionsLength => _transactions.length;
+
   double get balance {
     double total = 0;
     for (Transaction trans in _transactions) {
@@ -34,7 +38,7 @@ class TransactionController extends GetxController {
   }
 
   Future<void> setLocalStorage() async {
-    _tsBox.clear();
+    await _tsBox.clear();
     for (Transaction ts in _transactions) {
       _tsBox.add(ts);
     }
@@ -75,7 +79,7 @@ class TransactionController extends GetxController {
     setLocalStorage();
   }
 
-  Future<void> deleteAll() async {
+  Future<void> deleteAllTransactions() async {
     await _tsBox.clear();
     _transactions.value = [];
 

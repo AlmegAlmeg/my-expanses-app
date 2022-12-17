@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Keycolors
-const Color keyColor1 = Color(0XFF297F87);
+const Color keyColor1 = Color.fromARGB(255, 72, 202, 58);
 const Color keyColor2 = Color(0XFFDF2E2E);
 const Color keyColor3 = Color(0XFFF6D167);
 

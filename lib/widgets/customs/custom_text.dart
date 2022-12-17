@@ -9,6 +9,7 @@ class CustomText extends StatelessWidget {
     this.color,
     this.fontSize = FontSizes.text21,
     this.textDirection = TextDirection.rtl,
+    this.textDecoration = TextDecoration.none,
     super.key,
   });
 
@@ -17,6 +18,7 @@ class CustomText extends StatelessWidget {
   final Color? color;
   final double fontSize;
   final TextDirection textDirection;
+  final TextDecoration textDecoration;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,10 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       textDirection: textDirection,
       style: TextStyle(
-        color: color ?? lightGrey,
+        color: color ?? darkGrey,
         fontSize: fontSize,
         fontFamily: "Arimo",
+        decoration: textDecoration,
       ),
     );
   }

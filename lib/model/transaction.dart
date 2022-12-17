@@ -23,16 +23,6 @@ class Transaction extends HiveObject {
     required this.createdAt,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "name": name,
-      "amount": amount,
-      "isExpanse": isExpanse,
-      "createdAt": name,
-    };
-  }
-
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
       id: json["id"],
