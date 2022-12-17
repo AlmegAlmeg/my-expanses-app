@@ -2,24 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myexpenessapp/config/colors.dart';
 import 'package:myexpenessapp/config/font_sizes.dart';
+import 'package:myexpenessapp/controllers/transaction_controller.dart';
+import 'package:myexpenessapp/model/transaction.dart';
 import 'package:myexpenessapp/widgets/customs/custom_button.dart';
 import 'package:myexpenessapp/widgets/customs/custom_form_field.dart';
 import 'package:myexpenessapp/widgets/customs/custom_text.dart';
+import 'package:uuid/uuid.dart';
 
 class AddTransactionPage extends StatefulWidget {
-  const AddTransactionPage({this.id = '', super.key});
+  const AddTransactionPage({this.id, super.key});
 
-  final String id;
+  final String? id;
 
   @override
   State<AddTransactionPage> createState() => _AddTransactionPageState();
 }
 
 class _AddTransactionPageState extends State<AddTransactionPage> {
+  final TransactionController tc = Get.put(TransactionController());
+
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
-  bool isExpanse = false;
+  bool isExpanse = true;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +70,7 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
                 children: [
                   /* Name input */
                   CustomFormField(
-                    label: "תיאור",
+                    label: "שם העסקה",
                     controller: _nameController,
                     validator: (String? value) {
                       if (value == null || value.isEmpty || value.replaceAll(" ", "").isEmpty) {
@@ -119,13 +124,21 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
     if (!_formKey.currentState!.validate()) return;
     _formKey.currentState!.save();
 
-    final Map<String, dynamic> json = {
-      "id": "",
-      "name": _nameController.text,
-      "amount": double.tryParse(_amountController.text),
-      "isExpanse": isExpanse,
-      "createdAt": DateTime.now(),
-    };
+    const Uuid uuid = Uuid();
+
+    final Transaction transaction = Transaction(
+      id: widget.id ?? uuid.v4(),
+      name: _nameController.text,
+      amount: double.parse(_amountController.text),
+      isExpanse: isExpanse,
+      createdAt: DateTime.now(),
+    );
+
+    if (widget.id == null) {
+      tc.addTransaction(transaction);
+    } else {
+      tc.updateTransaction(transaction);
+    }
 
     Get.back();
   }
